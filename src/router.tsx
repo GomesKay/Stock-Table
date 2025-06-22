@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router"
 
+import { Dashboard } from "./pages/dashboard"
 import { Home } from "./pages/home"
-import { Table } from "./pages/table"
 
 export function Router() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/table" element={<Table />} />
+      <Route path="/table" element={<Dashboard />} />
     </Routes>
   )
 }
