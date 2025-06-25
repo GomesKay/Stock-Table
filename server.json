@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "product": "Monitor Gamer LG Ultragear 27''",
+      "price": 899,
+      "status": "stock",
+      "amount": 2,
+      "createdAt": "2025-06-12T23:23:32.809Z"
+    },
+    {
+      "id": 2,
+      "product": "Monitor Gamer LG Ultragear 24''",
+      "price": 799,
+      "status": "lack",
+      "amount": 0,
+      "createdAt": "2025-06-14T23:23:32.809Z"
+    },
+    {
+      "id": 3,
+      "product": "Monitor Gamer Samsung Odyssey 25'' G40",
+      "price": 1499,
+      "status": "stock",
+      "amount": 4,
+      "createdAt": "2025-06-22T23:23:32.809Z"
+    },
+    {
+      "id": 4,
+      "product": "Monitor Gamer Samsung Odyssey 24'' G32",
+      "price": 789,
+      "status": "lack",
+      "amount": 0,
+      "createdAt": "2025-06-24T23:23:32.809Z"
+    }
+  ]
+}

@@ -1,3 +1,6 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
+
 import {
   Table,
   TableBody,
@@ -7,7 +10,32 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+interface Product {
+  id: number
+  product: string
+  price: number
+  status: string
+  amount: number
+  createdAt: string
+}
+
 export function TableProduct() {
+  const [products, setProducts] = useState<Product[]>([])
+
+  useEffect(() => {
+    async function getProducts() {
+      try {
+        const response = await axios.get("http://localhost:3333/products")
+
+        setProducts(response.data)
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error)
+      }
+    }
+
+    getProducts()
+  }, [])
+
   return (
     <Table>
       <TableHeader>
@@ -21,44 +49,33 @@ export function TableProduct() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow>
-          <TableCell>bd544564fe</TableCell>
-          <TableCell>Tablet Samsung 10 FE</TableCell>
-          <TableCell className="text-center">5</TableCell>
-          <TableCell className="text-center">R$ 2.999,00</TableCell>
-          <TableCell className="text-center">
-            <span className="cursor-pointer rounded-2xl bg-green-400 px-4 py-1 text-xs font-semibold text-black">
-              Em estoque
-            </span>
-          </TableCell>
-          <TableCell className="text-center">20/06/2025</TableCell>
-        </TableRow>
-
-        <TableRow>
-          <TableCell>bd544564fe</TableCell>
-          <TableCell>Funko Pop! Itachi Uchiha</TableCell>
-          <TableCell className="text-center">3</TableCell>
-          <TableCell className="text-center">R$ 149,00</TableCell>
-          <TableCell className="text-center">
-            <span className="cursor-pointer rounded-2xl bg-green-400 px-4 py-1 text-xs font-semibold text-black">
-              Em estoque
-            </span>
-          </TableCell>
-          <TableCell className="text-center">20/06/2025</TableCell>
-        </TableRow>
-
-        <TableRow>
-          <TableCell>bd544564fe</TableCell>
-          <TableCell>Funko Pop! Sasuke Uchiha Exclusive Glow</TableCell>
-          <TableCell className="text-center">0</TableCell>
-          <TableCell className="text-center">R$ 179,00</TableCell>
-          <TableCell className="text-center">
-            <span className="cursor-pointer rounded-2xl bg-red-400 px-4 py-1 text-xs font-semibold text-black">
-              Em falta
-            </span>
-          </TableCell>
-          <TableCell className="text-center">20/06/2025</TableCell>
-        </TableRow>
+        {products.map((product) => (
+          <TableRow key={product.id}>
+            <TableCell>{product.id}</TableCell>
+            <TableCell>{product.product}</TableCell>
+            <TableCell className="text-center">{product.amount}</TableCell>
+            <TableCell className="text-center">
+              {product.price.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </TableCell>
+            <TableCell className="text-center">
+              {product.status === "stock" ? (
+                <span className="cursor-pointer rounded-2xl bg-green-400 px-4 py-1 text-xs font-semibold text-black">
+                  Em estoque
+                </span>
+              ) : (
+                <span className="cursor-pointer rounded-2xl bg-red-400 px-4 py-1 text-xs font-semibold text-black">
+                  Em falta
+                </span>
+              )}
+            </TableCell>
+            <TableCell className="text-center">
+              {new Date(product.createdAt).toLocaleDateString("pt-BR")}
+            </TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   )
