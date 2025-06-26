@@ -1,4 +1,5 @@
 import axios from "axios"
+import { Trash } from "lucide-react"
 import { useEffect, useState } from "react"
 
 import {
@@ -10,22 +11,19 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-interface Product {
-  id: number
-  product: string
-  price: number
-  status: string
-  amount: number
-  createdAt: string
-}
+import type { Product, TableProductProps } from "../types/product"
 
-export function TableProduct() {
+export function TableProduct({ filterQuery }: TableProductProps) {
   const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
     async function getProducts() {
       try {
-        const response = await axios.get("http://localhost:3333/products")
+        const url = filterQuery
+          ? `http://localhost:3333/products?product_like=${filterQuery}`
+          : "http://localhost:3333/products"
+
+        const response = await axios.get(url)
 
         setProducts(response.data)
       } catch (error) {
@@ -34,7 +32,15 @@ export function TableProduct() {
     }
 
     getProducts()
-  }, [])
+  }, [filterQuery])
+
+  async function handleDeleteProduct(id: number) {
+    try {
+      await axios.delete(`http://localhost:3333/products/${id}`)
+    } catch (error) {
+      console.error("Erro ao deletar produto:", error)
+    }
+  }
 
   return (
     <Table>
@@ -49,33 +55,48 @@ export function TableProduct() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {products.map((product) => (
-          <TableRow key={product.id}>
-            <TableCell>{product.id}</TableCell>
-            <TableCell>{product.product}</TableCell>
-            <TableCell className="text-center">{product.amount}</TableCell>
-            <TableCell className="text-center">
-              {product.price.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              })}
-            </TableCell>
-            <TableCell className="text-center">
-              {product.status === "stock" ? (
-                <span className="cursor-pointer rounded-2xl bg-green-400 px-4 py-1 text-xs font-semibold text-black">
-                  Em estoque
-                </span>
-              ) : (
-                <span className="cursor-pointer rounded-2xl bg-red-400 px-4 py-1 text-xs font-semibold text-black">
-                  Em falta
-                </span>
-              )}
-            </TableCell>
-            <TableCell className="text-center">
-              {new Date(product.createdAt).toLocaleDateString("pt-BR")}
+        {products.length ? (
+          products.map((product) => (
+            <TableRow key={product.id}>
+              <TableCell>{product.id}</TableCell>
+              <TableCell>{product.product}</TableCell>
+              <TableCell className="text-center">{product.amount}</TableCell>
+              <TableCell className="text-center">
+                {product.price.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </TableCell>
+              <TableCell className="text-center">
+                {product.status === "stock" ? (
+                  <span className="cursor-pointer rounded-2xl bg-green-400 px-4 py-1 text-xs font-semibold text-black">
+                    Em estoque
+                  </span>
+                ) : (
+                  <span className="cursor-pointer rounded-2xl bg-red-400 px-4 py-1 text-xs font-semibold text-black">
+                    Em falta
+                  </span>
+                )}
+              </TableCell>
+              <TableCell className="text-center">
+                {new Date(product.createdAt).toLocaleDateString("pt-BR")}
+              </TableCell>
+              <TableCell>
+                <Trash
+                  size={18}
+                  className="cursor-pointer hover:text-red-400"
+                  onClick={() => handleDeleteProduct(product.id)}
+                />
+              </TableCell>
+            </TableRow>
+          ))
+        ) : (
+          <TableRow>
+            <TableCell colSpan={6} className="h-12 text-center">
+              Nenhum produto encontrado
             </TableCell>
           </TableRow>
-        ))}
+        )}
       </TableBody>
     </Table>
   )

@@ -1,9 +1,11 @@
 import { ErrorMessage } from "@hookform/error-message"
 import { zodResolver } from "@hookform/resolvers/zod"
+import axios from "axios"
+import { nanoid } from "nanoid"
 import { useEffect } from "react"
 import { Controller } from "react-hook-form"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -23,32 +25,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import axios from "axios"
-import { nanoid } from "nanoid"
-import { toast } from "sonner"
-
-const createProductFormSchema = z
-  .object({
-    product: z.string().nonempty("Nome do produto é obrigatório"),
-    price: z.coerce.number().min(1, "O preço mínimo é 1"),
-    status: z.enum(["stock", "lack"], {
-      errorMap: () => ({ message: "Escolha o status do produto" }),
-    }),
-    amount: z.coerce.number(),
-  })
-  .refine(
-    (data) => {
-      if (data.status === "stock") return data.amount >= 1
-      if (data.status === "lack") return data.amount === 0
-      return true
-    },
-    {
-      path: ["amount"],
-      message: "Quantidade inválida para o status selecionado",
-    },
-  )
-
-type CreateProductFormSchema = z.infer<typeof createProductFormSchema>
+import {
+  type CreateProductFormSchema,
+  createProductFormSchema,
+} from "@/schemas/product-schema"
 
 export function DialogProduct() {
   const {
@@ -165,7 +145,6 @@ export function DialogProduct() {
                 <p className="text-sm text-red-500">{message}</p>
               )}
             />
-
             <ErrorMessage
               errors={errors}
               name="status"
@@ -173,7 +152,6 @@ export function DialogProduct() {
                 <p className="text-sm text-red-500">{message}</p>
               )}
             />
-
             <ErrorMessage
               errors={errors}
               name="amount"

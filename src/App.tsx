@@ -1,8 +1,7 @@
 import { BrowserRouter } from "react-router"
+import { Toaster } from "sonner"
 
 import { Router } from "./router"
-
-import { Toaster } from "sonner"
 
 export function App() {
   return (

@@ -1,46 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "product": "Monitor Gamer LG Ultragear 27''",
-      "price": 899,
-      "status": "stock",
-      "amount": 2,
-      "createdAt": "2025-06-12T23:23:32.809Z"
-    },
-    {
-      "id": 2,
-      "product": "Monitor Gamer LG Ultragear 24''",
-      "price": 799,
-      "status": "lack",
-      "amount": 0,
-      "createdAt": "2025-06-14T23:23:32.809Z"
-    },
-    {
-      "id": 3,
-      "product": "Monitor Gamer Samsung Odyssey 25'' G40",
-      "price": 1499,
-      "status": "stock",
-      "amount": 4,
-      "createdAt": "2025-06-22T23:23:32.809Z"
-    },
-    {
-      "id": 4,
-      "product": "Monitor Gamer Samsung Odyssey 24'' G32",
-      "price": 789,
-      "status": "lack",
-      "amount": 0,
-      "createdAt": "2025-06-24T23:23:32.809Z"
-    },
-    {
-      "id": "7e6173d6-d8a1-410a-ac45-8f3bbed80dd5",
-      "product": "Processador Ryzen 5 5600GT AM4",
-      "price": 859,
-      "status": "stock",
-      "amount": 4,
-      "createdAt": "2025-06-26T16:08:19.287Z"
-    },
-    {
       "id": "polFXP-1-OLj3T1RfzdTE",
       "product": "Processador Ryzen 5 5600 AM4",
       "price": 799,
@@ -49,12 +9,20 @@
       "createdAt": "2025-06-26T16:10:33.366Z"
     },
     {
-      "id": "7IFVbIg65A_FM_7Rb5xEn",
-      "product": "Capinha Xiaomi Redmi 12S",
-      "price": 99,
+      "id": "9V9AopvapEi-B-27BHOy0",
+      "product": "Monitor Arzopa 17'' Full HD",
+      "price": 499,
       "status": "stock",
-      "amount": 10,
-      "createdAt": "2025-06-26T16:19:22.267Z"
+      "amount": 5,
+      "createdAt": "2025-06-26T21:28:55.022Z"
+    },
+    {
+      "id": "Ogy2NHiGBkCG_8wxGr3Qe",
+      "product": "Monitor Gamer LG Ultragear 27'' Full HD",
+      "price": 979,
+      "status": "stock",
+      "amount": 5,
+      "createdAt": "2025-06-26T22:32:25.224Z"
     }
   ]
 }
