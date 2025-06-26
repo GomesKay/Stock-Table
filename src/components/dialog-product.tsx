@@ -23,6 +23,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import axios from "axios"
+import { nanoid } from "nanoid"
+import { toast } from "sonner"
 
 const createProductFormSchema = z
   .object({
@@ -69,10 +72,20 @@ export function DialogProduct() {
     }
   }, [statusValue, setValue])
 
-  function createProduct(data: CreateProductFormSchema) {
-    console.log(data)
+  async function createProduct(data: CreateProductFormSchema) {
+    const { product, price, status, amount } = data
+
+    await axios.post("http://localhost:3333/products", {
+      id: nanoid(),
+      product: product,
+      price: price,
+      status: status,
+      amount: amount,
+      createdAt: new Date(),
+    })
 
     reset()
+    toast.success("Produto criado com sucesso")
   }
 
   return (

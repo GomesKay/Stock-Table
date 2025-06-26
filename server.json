@@ -31,6 +31,30 @@
       "status": "lack",
       "amount": 0,
       "createdAt": "2025-06-24T23:23:32.809Z"
+    },
+    {
+      "id": "7e6173d6-d8a1-410a-ac45-8f3bbed80dd5",
+      "product": "Processador Ryzen 5 5600GT AM4",
+      "price": 859,
+      "status": "stock",
+      "amount": 4,
+      "createdAt": "2025-06-26T16:08:19.287Z"
+    },
+    {
+      "id": "polFXP-1-OLj3T1RfzdTE",
+      "product": "Processador Ryzen 5 5600 AM4",
+      "price": 799,
+      "status": "lack",
+      "amount": 0,
+      "createdAt": "2025-06-26T16:10:33.366Z"
+    },
+    {
+      "id": "7IFVbIg65A_FM_7Rb5xEn",
+      "product": "Capinha Xiaomi Redmi 12S",
+      "price": 99,
+      "status": "stock",
+      "amount": 10,
+      "createdAt": "2025-06-26T16:19:22.267Z"
     }
   ]
 }
