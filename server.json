@@ -23,6 +23,38 @@
       "status": "stock",
       "amount": 5,
       "createdAt": "2025-06-26T22:32:25.224Z"
+    },
+    {
+      "id": "oPSnJqp2OY_WED4J-sQ6y",
+      "product": "Funko Pop! Television Star Wars Darth Vader",
+      "price": 149,
+      "status": "stock",
+      "amount": 6,
+      "createdAt": "2025-06-26T22:51:25.423Z"
+    },
+    {
+      "id": "yKGBoESEkn18fiMIBSX_i",
+      "product": "Gabinete Gamer Montech AIR 100 ARGB",
+      "price": 329,
+      "status": "stock",
+      "amount": 30,
+      "createdAt": "2025-06-26T22:52:26.622Z"
+    },
+    {
+      "id": "GKeqN7t1AG8uukAf8D9cb",
+      "product": "Cadeira Gamer Elements Magna",
+      "price": 2299,
+      "status": "lack",
+      "amount": 0,
+      "createdAt": "2025-06-26T22:53:19.431Z"
+    },
+    {
+      "id": "lyY4o1OHtZUK93YLM19EX",
+      "product": "Placa de vídeo RTX 4060 ASUS Dual 8G EVO OC NVIDIA GeForce",
+      "price": 2599,
+      "status": "stock",
+      "amount": 2,
+      "createdAt": "2025-06-26T22:54:54.837Z"
     }
   ]
 }

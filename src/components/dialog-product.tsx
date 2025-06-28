@@ -96,7 +96,7 @@ export function DialogProduct() {
             />
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 max-[425px]:flex-col">
             <Input
               type="number"
               placeholder="Preço"

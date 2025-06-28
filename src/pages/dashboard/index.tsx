@@ -32,11 +32,11 @@ export function Dashboard() {
 
   return (
     <div className="font-text flex min-h-screen flex-col items-center justify-center gap-4">
-      <div className="flex w-[1000px] justify-between">
+      <div className="flex w-[1000px] justify-between max-[1100px]:w-[700px] max-[720px]:w-[400px] max-[425px]:w-[300px] max-[425px]:flex-col max-[425px]:items-center max-[425px]:gap-4">
         <form onSubmit={handleSubmit(getProductByName)} className="flex gap-4">
           <Input
             type="search"
-            className="w-60 text-white"
+            className="w-60 text-white max-[720px]:w-40"
             placeholder="Filtrar produto"
             {...register("query")}
           />
@@ -48,7 +48,7 @@ export function Dashboard() {
         <DialogProduct />
       </div>
 
-      <div className="w-[1100px] rounded-md border text-white">
+      <div className="w-[1100px] rounded-md border text-white max-[1100px]:w-[700px] max-[720px]:w-[400px] max-[425px]:w-[300px]">
         <TableProduct filterQuery={query} />
       </div>
     </div>
