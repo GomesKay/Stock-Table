@@ -3,6 +3,22 @@
 <img src="https://github.com/user-attachments/assets/1f0966d1-fdaf-4d98-b686-6afd25e1c18e" alt="Home" />
 <img src="https://github.com/user-attachments/assets/e1aa0b73-de63-4c4c-825d-6ec608703d2c" alt="Dashboard" />
 
+<h2 align="center">💻 Instalação e Uso</h2>
+
+### 🛠️ Pré-requisitos
+ - Node.js
+ - NPM
+ - Git
+ - VSCode
+
+  | Passos | Comandos | Descrição |
+  | --- | --- | --- |
+  | 01 | `git clone https://github.com/GomesKay/Stock-Table.git` | Clona este repositório para o seu computador |
+  | 02 | `cd Stock-Table` | Acesse a pasta do projeto |
+  | 03 | `npm install` | Instala todas as dependências necessárias para o projeto |
+  | 04 | `npm run dev` | Inicia o servidor de desenvolvimento e abre o projeto no navegador |
+  | 05 | `npm run dev:server` | Inicia o servidor para visualizar os produtos na tabela |
+
 <div align="center">
   
   ## 🚀 Tecnologias
